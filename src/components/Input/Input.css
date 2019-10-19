@@ -1,0 +1,22 @@
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.input::placeholder {
+  font-size: 14px;
+}
+
+.input_error {
+  box-shadow: none;
+  color: #ed4159;
+  border: 1px solid #ed4159;
+}
+
+.input:-moz-ui-invalid {
+  box-shadow: none;
+  color: #ed4159;
+  border: 1px solid #ed4159;
+}
