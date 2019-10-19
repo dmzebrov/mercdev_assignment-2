@@ -1,4 +1,6 @@
 .chatlist-head {
+  position: fixed;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -6,6 +8,7 @@
 }
 
 .chatlist-head__content {
+  box-sizing: content-box;
   width: 100%;
   max-width: 1160px;
   display: flex;
