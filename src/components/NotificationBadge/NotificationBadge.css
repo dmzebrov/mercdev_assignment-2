@@ -1,0 +1,15 @@
+.notification-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 24px;
+  border-radius: 15px;
+  background-color: #ff584f;
+}
+
+.notification-badge__number {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
