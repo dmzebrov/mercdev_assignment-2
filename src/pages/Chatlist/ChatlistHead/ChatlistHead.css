@@ -1,0 +1,79 @@
+.chatlist-head {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(200deg, hsl(274, 85%, 40%), hsl(236, 66%, 42%));
+}
+
+.chatlist-head__content {
+  width: 100%;
+  max-width: 1160px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 16px;
+  z-index: 10;
+}
+
+.chatlist-head__title-notification-badge-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.chatlist-head__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 30px;
+}
+
+.chatlist__background-wrapper {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+}
+
+.chatlist__background-image {
+  position: absolute;
+  top: -50px;
+}
+
+.chatlist-head__search-container {
+  display: flex;
+}
+
+.chatlist-head__search-input {
+  color: #aca0e9;
+  transition: all 0.3s;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  border: none;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.chatlist-head__search-input::placeholder {
+  color: #aca0e9;
+  opacity: 1;
+}
+
+.chatlist-head__search-input:focus {
+  color: #000;
+  outline: none;
+  background-color: hsla(0, 0%, 100%, 1);
+}
+
+.chatlist-head__search-button {
+  width: auto;
+  background-color: #715dff;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px -6px rgba(113, 93, 255, 0.7);
+}
+
+.chatlist-head__search-icon {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
