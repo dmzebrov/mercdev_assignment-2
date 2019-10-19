@@ -1,0 +1,8 @@
+.chatlist-body {
+  height: calc(100vh - 122px);
+  overflow-y: scroll;
+}
+
+.chatlist-body__container {
+  height: 1000px;
+}
