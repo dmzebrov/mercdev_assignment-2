@@ -32,10 +32,15 @@
 }
 
 .chatlist__background-wrapper {
+  width: 424px;
+  height: 122px;
   display: flex;
   justify-content: center;
   position: absolute;
   z-index: 1;
+  background-image: url('../../../files/pic-circles.svg');
+  background-size: cover;
+  background-position: center -50px;
 }
 
 .chatlist__background-image {
@@ -79,4 +84,9 @@
   width: 18px;
   height: 18px;
   fill: #fff;
+  transition: all .3s;
+}
+
+.chatlist-head__search-button:hover > .chatlist-head__search-icon {
+  fill: #aca0e9;
 }

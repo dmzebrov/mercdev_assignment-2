@@ -1,7 +1,7 @@
 import React from "react";
 import "./ChatlistHead.css";
 
-import chatlistBackgroundImage from "files/pic-circles.svg";
+// import chatlistBackgroundImage from "files/pic-circles.svg";
 import NotificationBadge from "components/NotificationBadge/NotificationBadge";
 import Input from "components/Input/Input";
 import Button from "components/Button/Button";
@@ -10,11 +10,11 @@ function ChatlistHead({ searchChat }) {
   return (
     <div className="chatlist-head">
       <div className="chatlist__background-wrapper">
-        <img
+        {/* <img
           alt="Circles"
           src={chatlistBackgroundImage}
           className="chatlist__background-image"
-        />
+        /> */}
       </div>
 
       <div className="chatlist-head__content">
