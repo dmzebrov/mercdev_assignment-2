@@ -1,30 +1,112 @@
-import React from 'react';
-import './Chatlist.css';
+import React from "react";
 
-import ChatlistHead from './ChatlistHead/ChatlistHead';
-import ChatlistBody from './ChatlistBody/ChatlistBody';
+import api from "api";
+import { addButtonHoverClass } from "utilities/pc-classes";
+import ChatlistHead from "./ChatlistHead/ChatlistHead";
+import ChatlistBody from "./ChatlistBody/ChatlistBody";
 
 class Chatlist extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleSearchValue = this.handleSearchValue.bind(this);
     this.searchChat = this.searchChat.bind(this);
+    this.getMessages = this.getMessages.bind(this);
 
-
+    this.state = {
+      searchValue: "",
+      allMessages: [],
+      displayedMessages: []
+    };
   }
 
-  searchChat() {
-    console.log('search');
+  componentDidMount() {
+    addButtonHoverClass();
+    this.getMessages();
+  }
+
+  async getMessages() {
+    try {
+      const messages = await api.getMessages();
+      const displayedMessages = [];
+
+      messages.forEach(message => {
+        let displayedMessage = {
+          id: message.id,
+          userId: message.userId,
+          title: message.title,
+          body: message.body
+        };
+
+        displayedMessages.push(displayedMessage);
+      });
+
+      this.setState({
+        allMessages: messages,
+        displayedMessages: displayedMessages
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  handleSearchValue(e) {
+    this.setState(
+      {
+        searchValue: e.target.value
+      },
+
+      () => {
+        if (this.state.searchValue.length > 1) {
+          this.searchChat();
+        } else {
+          this.setState({
+            displayedMessages: this.state.allMessages
+          });
+        }
+      }
+    );
+  }
+
+  searchChat(e = false) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    const foundMessages = [];
+
+    this.state.allMessages.forEach(message => {
+      let bodyIndexOf = message.body
+        .toLowerCase()
+        .indexOf(this.state.searchValue.toLowerCase());
+      let titleIndexOf = message.title
+        .toLowerCase()
+        .indexOf(this.state.searchValue.toLowerCase());
+
+      if (bodyIndexOf !== -1 || titleIndexOf !== -1) {
+        foundMessages.push(message);
+      }
+    });
+
+    this.setState({
+      displayedMessages: foundMessages
+    });
   }
 
   render() {
     return (
       <>
-        <ChatlistHead searchChat={this.searchChat} />
+        <ChatlistHead
+          handleSearchValue={this.handleSearchValue}
+          searchChat={this.searchChat}
+        />
 
-        <ChatlistBody />
+        <ChatlistBody
+          chatlistData={this.state.displayedMessages}
+          searchValue={this.state.searchValue}
+        />
       </>
-    )
+    );
   }
 }
 
