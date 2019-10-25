@@ -1,0 +1,90 @@
+.chat-card {
+  width: 100%;
+  max-width: 1160px;
+  padding: 16px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px -14px rgba(75, 78, 128, 0.2);
+  display: flex;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.chat-card__avatar-wrapper {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin-right: 12px;
+}
+
+.chat-card__avatar {
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+}
+
+.chat-card__online-status-dot {
+  position: absolute;
+  right: -2px;
+  bottom: 2px;
+  width: 6px;
+  height: 6px;
+  border: solid 2px #ffffff;
+  border-radius: 50%;
+  background-color: #5fcc2b;
+  box-sizing: content-box;
+}
+
+.chat-card__chat-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-card__title-date-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.chat-card__title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #141740;
+  transition: all .2s;
+}
+
+.chat-card__date {
+  font-weight: 400;
+  font-size: 11px;
+  color: #adaec4;
+  transition: all .2s;
+  white-space: nowrap;
+}
+
+.chat-card__message {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: #9394a7;
+  transition: all .2s;
+}
+
+.chat-card:hover {
+  background-color: #f8f9ff;
+  box-shadow: 0 8px 24px -14px rgba(17, 25, 166, 0.2);
+}
+
+.chat-card:hover .chat-card__title {
+  color: #715dff;
+}
+
+.chat-card:hover .chat-card__date {
+  color: #141740;
+}
+
+.chat-card:hover .chat-card__message {
+  color: #141740;
+}
