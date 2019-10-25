@@ -1,7 +1,7 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import Chatlist from './pages/Chatlist/Chatlist';
+import Chatlist from "./pages/Chatlist/Chatlist";
 
 function App() {
   return (
