@@ -22,10 +22,10 @@ class Input extends React.Component {
   }
 
   handleChange(e) {
-    var inputType = e.target.type;
-    var inputValue = e.target.value;
+    let inputType = e.target.type;
+    let inputValue = e.target.value;
 
-    var inputError;
+    let inputError;
 
     if (this.props.validate) {
       inputError = this.validate(e, inputType, inputValue);
@@ -66,7 +66,7 @@ class Input extends React.Component {
   render() {
     const { className, handleChange, ...otherProps } = this.props;
 
-    var inputClass = classNames({
+    let inputClass = classNames({
       input: true,
       input_error: this.state.displayError && this.state.error
     });
