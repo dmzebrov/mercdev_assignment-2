@@ -1,15 +1,28 @@
-import React from 'react';
-import './ChatlistBody.css';
-import ChatlistHead from '../ChatlistHead/ChatlistHead';
+import React from "react";
+import "./ChatlistBody.css";
 
-function ChatlistBody({ chatList, ...otherProps }) {
+import ChatCard from "pages/Chatlist/ChatCard/ChatCard";
+
+function ChatlistBody({ chatlistData, searchValue }) {
+  let chatlist = <h1>Messages not found</h1>;
+
+  if (chatlistData.length > 0) {
+    chatlist = chatlistData.map(chatData => {
+      return (
+        <ChatCard
+          key={chatData.id}
+          chatData={chatData}
+          searchValue={searchValue}
+        ></ChatCard>
+      );
+    });
+  }
+
   return (
     <div className="chatlist-body">
-      <div className="chatlist-body__container">
-        <h1>hello world</h1>
-      </div>
+      <div className="chatlist-body__content">{chatlist}</div>
     </div>
-  )
+  );
 }
 
 export default ChatlistBody;
