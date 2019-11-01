@@ -1,7 +1,6 @@
 import React from "react";
 
 import api from "api";
-import { addButtonHoverClass } from "utilities/pc-classes";
 import ChatlistHead from "./ChatlistHead/ChatlistHead";
 import ChatlistBody from "./ChatlistBody/ChatlistBody";
 
@@ -21,7 +20,6 @@ class Chatlist extends React.Component {
   }
 
   componentDidMount() {
-    addButtonHoverClass();
     this.getMessages();
   }
 
