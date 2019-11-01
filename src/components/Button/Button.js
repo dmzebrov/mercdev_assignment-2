@@ -11,7 +11,12 @@ function Button({ className, ...otherProps }) {
 
   let buttonPCHoverClass = !touchsupport ? "button_button-hover" : "";
 
-  return <button className={classNames("button", buttonPCHoverClass, className)} {...otherProps} />;
+  return (
+    <button
+      className={classNames("button", buttonPCHoverClass, className)}
+      {...otherProps}
+    />
+  );
 }
 
 export default Button;
