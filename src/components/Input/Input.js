@@ -2,85 +2,15 @@ import React from "react";
 import "./Input.css";
 
 import classNames from "classnames";
-import {
-  validateEmail,
-  validatePassword
-} from "utilities/input-validation";
 
-class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.validate = this.validate.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-
-    this.state = {
-      value: "",
-      displayError: false,
-      error: true
-    };
-  }
-
-  handleChange(e) {
-    let inputType = e.target.type;
-    let inputValue = e.target.value;
-
-    let inputError;
-
-    if (this.props.validate) {
-      inputError = this.validate(e, inputType, inputValue);
-    } else {
-      inputError = false;
-    };
-
-    this.setState({
-      value: inputValue,
-      error: inputError
-    });
-
-    this.props.handleChange(e, inputError);
-  }
-
-  validate(e, inputType, inputValue) {
-    if (inputType === "email") {
-      return !validateEmail(inputValue);
-    }
-    if (inputType === "password") {
-      return !validatePassword(
-        inputValue,
-        this.props.minLength,
-        this.props.maxLength,
-        this.props.regexp
-      );
-    }
-  }
-
-  handleBlur() {
-    if (this.props.validate) {
-      this.setState({
-        displayError: true
-      });
-    }
-  }
-
-  render() {
-    const { className, handleChange, ...otherProps } = this.props;
-
-    let inputClass = classNames({
-      input: true,
-      input_error: this.state.displayError && this.state.error
-    });
-
-    return (
-      <input
-        className={classNames(inputClass, className)}
-        value={this.state.value}
-        onBlur={this.handleBlur}
-        onChange={this.handleChange}
-        {...otherProps}
-      />
-    );
-  }
+function Input({ className, handleChange, ...otherProps }) {
+  return (
+    <input
+      className={classNames("input", className)}
+      onChange={handleChange}
+      {...otherProps}
+    />
+  );
 }
 
 export default Input;
