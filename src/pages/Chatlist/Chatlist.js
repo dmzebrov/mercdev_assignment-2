@@ -67,7 +67,7 @@ class Chatlist extends React.Component {
       e.preventDefault();
     }
 
-    function searchMessages(message) {
+    const searchMessages = message => {
       let bodyIndexOf = message.body
         .toLowerCase()
         .indexOf(this.state.searchValue.toLowerCase());
@@ -82,7 +82,7 @@ class Chatlist extends React.Component {
       return false;
     }
 
-    const foundMessages = this.state.allMessages.filter(searchMessages, this);
+    const foundMessages = this.state.allMessages.filter(searchMessages);
 
     this.setState({
       displayedMessages: foundMessages
