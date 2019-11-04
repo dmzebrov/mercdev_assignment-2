@@ -1,7 +1,6 @@
 import React from "react";
 
 import api from "api";
-import { addButtonHoverClass } from "utilities/pc-classes";
 import ChatlistHead from "./ChatlistHead/ChatlistHead";
 import ChatlistBody from "./ChatlistBody/ChatlistBody";
 
@@ -21,24 +20,19 @@ class Chatlist extends React.Component {
   }
 
   componentDidMount() {
-    addButtonHoverClass();
     this.getMessages();
   }
 
   async getMessages() {
     try {
       const messages = await api.getMessages();
-      const displayedMessages = [];
-
-      messages.forEach(message => {
-        let displayedMessage = {
+      const displayedMessages = messages.map(message => {
+        return {
           id: message.id,
           userId: message.userId,
           title: message.title,
           body: message.body
         };
-
-        displayedMessages.push(displayedMessage);
       });
 
       this.setState({
@@ -73,9 +67,7 @@ class Chatlist extends React.Component {
       e.preventDefault();
     }
 
-    const foundMessages = [];
-
-    this.state.allMessages.forEach(message => {
+    const searchMessages = message => {
       let bodyIndexOf = message.body
         .toLowerCase()
         .indexOf(this.state.searchValue.toLowerCase());
@@ -84,9 +76,13 @@ class Chatlist extends React.Component {
         .indexOf(this.state.searchValue.toLowerCase());
 
       if (bodyIndexOf !== -1 || titleIndexOf !== -1) {
-        foundMessages.push(message);
+        return true;
       }
-    });
+
+      return false;
+    }
+
+    const foundMessages = this.state.allMessages.filter(searchMessages);
 
     this.setState({
       displayedMessages: foundMessages
